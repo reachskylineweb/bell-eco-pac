@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /layout/
+
+Sitemap: https://bellecopac.com/sitemap.xml
