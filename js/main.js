@@ -515,7 +515,7 @@ const PRODUCT_DIMENSIONS = {
   "burger-box": {
     name: "Burger Clamshell Box",
     cat: "Takeaway & Fast Food",
-    img: "assets/images/product_burger_box_custom.jpg",
+    img: "assets/images/product_burger_box_custom.webp",
     gsm: "320 GSM Virgin Kraft Board",
     barrier: "Food-Safe Aqueous Oil & Grease Barrier",
     pack: "500 pcs / carton",
@@ -528,7 +528,7 @@ const PRODUCT_DIMENSIONS = {
   "fries-scoop": {
     name: "Pop-up French Fry Scoop",
     cat: "Fries Trays & Cones",
-    img: "assets/images/product_fries_tray.jpg",
+    img: "assets/images/product_fries_tray.webp",
     gsm: "280–300 GSM Greaseproof Foodboard",
     barrier: "Oleophobic Grease Barrier",
     pack: "1,000 pcs / carton",
@@ -541,7 +541,7 @@ const PRODUCT_DIMENSIONS = {
   "hotdog-tray": {
     name: "Takeaway Hot Dog Tray",
     cat: "Fast Food Food Boats",
-    img: "assets/images/product_hotdog_tray.jpg",
+    img: "assets/images/product_hotdog_tray.webp",
     gsm: "300 GSM Certified Foodboard",
     barrier: "Moisture & Sauce Leak Barrier",
     pack: "1,000 pcs / carton",
@@ -553,7 +553,7 @@ const PRODUCT_DIMENSIONS = {
   "fast-food-tray": {
     name: "Fast Food Boat Tray",
     cat: "Food & Side Trays",
-    img: "assets/images/product_fast_food_tray.jpg",
+    img: "assets/images/product_fast_food_tray.webp",
     gsm: "320 GSM Rigid Foodboard",
     barrier: "High Grease Resistance",
     pack: "500 pcs / carton",
@@ -565,7 +565,7 @@ const PRODUCT_DIMENSIONS = {
   "cake-box": {
     name: "Bakery Pastry & Cake Box",
     cat: "Bakery & Cake Packaging",
-    img: "assets/images/product_cake_box_white.jpg",
+    img: "assets/images/product_cake_box_white.webp",
     gsm: "350–380 GSM High-Rigidity Bleached White Board",
     barrier: "Clean White Food-Safe Finish",
     pack: "250 pcs / carton",
@@ -579,7 +579,7 @@ const PRODUCT_DIMENSIONS = {
   "cupcake-box": {
     name: "4-Cavity Cupcake Presentation Box",
     cat: "Bakery & Dessert Packaging",
-    img: "assets/images/product_cupcake_box.jpg",
+    img: "assets/images/product_cupcake_box.webp",
     gsm: "320 GSM Premium White Board + Insert",
     barrier: "Crystal Clean Food Contact Surface",
     pack: "250 pcs / carton",
@@ -591,7 +591,7 @@ const PRODUCT_DIMENSIONS = {
   "paper-straws": {
     name: "Eco Paper Straws",
     cat: "Beverage & Sustainable",
-    img: "assets/images/product_paper_straws.jpg",
+    img: "assets/images/product_paper_straws.webp",
     gsm: "4-Ply FSC Scandinavian Virgin Kraft",
     barrier: "Zero Softening for 4+ Hours in Cold/Hot Drinks",
     pack: "250 pcs / pack • 5,000 / master carton",
@@ -604,7 +604,7 @@ const PRODUCT_DIMENSIONS = {
   "kraft-bag": {
     name: "Twist Handle Kraft Takeaway Bag",
     cat: "Carriers & Takeaway Bags",
-    img: "assets/images/product_kraft_bag.jpg",
+    img: "assets/images/product_kraft_bag.webp",
     gsm: "120 GSM High-Tensile Virgin Brown Kraft",
     barrier: "Reinforced Tear-Resistant Fiber",
     pack: "250 pcs / carton",
@@ -617,7 +617,7 @@ const PRODUCT_DIMENSIONS = {
   "round-bowl": {
     name: "Round Paper Food Container (Bowl)",
     cat: "Meal Bowls & Soups",
-    img: "assets/images/product_salad_bowl.jpg",
+    img: "assets/images/product_salad_bowl.webp",
     gsm: "300 GSM + 18 PE/Aqueous Barrier",
     barrier: "100% Liquid-Tight & Microwaveable",
     pack: "500 pcs / carton",
@@ -630,7 +630,7 @@ const PRODUCT_DIMENSIONS = {
   "window-box": {
     name: "Multi-Purpose Box with Window",
     cat: "Containers with Clear Window",
-    img: "assets/images/product_window_box.jpg",
+    img: "assets/images/product_window_box.webp",
     gsm: "320 GSM Kraft / White Board + Anti-Fog Window",
     barrier: "Grease & Sauce Resistant Coated Interior",
     pack: "500 pcs / carton",
@@ -643,7 +643,7 @@ const PRODUCT_DIMENSIONS = {
   "pillow-pack": {
     name: "Pillow Pack | Shawarma Pack",
     cat: "Takeaway Wraps & Rolls",
-    img: "assets/images/product_pillow_pack.jpg",
+    img: "assets/images/product_pillow_pack.webp",
     gsm: "300 GSM Greaseproof Certified Foodboard",
     barrier: "Hot Steam & Sauce Retention",
     pack: "1,000 pcs / carton",
@@ -655,7 +655,7 @@ const PRODUCT_DIMENSIONS = {
   "noodle-box": {
     name: "Takeaway Noodle Box",
     cat: "Asian & Noodle Containers",
-    img: "assets/images/product_noodle_box.jpg",
+    img: "assets/images/product_noodle_box.webp",
     gsm: "320 GSM Heavyweight Poly-Coated Board",
     barrier: "100% Leak-Proof Folded Base",
     pack: "500 pcs / carton",
@@ -668,7 +668,7 @@ const PRODUCT_DIMENSIONS = {
   "cake-base": {
     name: "Rigid Cake Base & Pastry Board",
     cat: "Bakery Under-Boards",
-    img: "assets/images/product_cake_base.jpg",
+    img: "assets/images/product_cake_base.webp",
     gsm: "1.5 mm – 2.5 mm Solid High-Density Compressed Board",
     barrier: "Greaseproof Food-Grade Embossed Foil / Wax",
     pack: "200 pcs / carton",
@@ -681,7 +681,7 @@ const PRODUCT_DIMENSIONS = {
   "lunch-box": {
     name: "Pure White Paper Lunch Box",
     cat: "Takeaway Lunch & Meals",
-    img: "assets/images/product_lunch_box_paper.jpg",
+    img: "assets/images/product_lunch_box_paper.webp",
     gsm: "300–320 GSM Bleached Virgin Foodboard",
     barrier: "Aqueous Oil & Moisture Barrier",
     pack: "500 pcs / carton",
@@ -696,7 +696,7 @@ const PRODUCT_DIMENSIONS = {
   "fold-box": {
     name: "Kraft Multi-Purpose Fold Box",
     cat: "Fold Boxes (Sizes A–G)",
-    img: "assets/images/product_fold_box_kraft.jpg",
+    img: "assets/images/product_fold_box_kraft.webp",
     gsm: "320 GSM Unbleached Virgin Kraft Board",
     barrier: "Grease Resistant Webbed Fold Corners",
     pack: "500 pcs / carton",
@@ -709,7 +709,7 @@ const PRODUCT_DIMENSIONS = {
   "pizza-box": {
     name: "White Corrugated Pizza Box",
     cat: "Corrugated Pizza Packaging",
-    img: "assets/images/product_pizza_box_white.jpg",
+    img: "assets/images/product_pizza_box_white.webp",
     gsm: "E-Flute Corrugated High-Strength Board",
     barrier: "Thermal Retention with Steam Vent Notches",
     pack: "100 pcs / bundle",
@@ -723,7 +723,7 @@ const PRODUCT_DIMENSIONS = {
   "chip-tray": {
     name: "Virgin Kraft Chip Tray",
     cat: "Open Food Trays",
-    img: "assets/images/product_chip_tray.jpg",
+    img: "assets/images/product_chip_tray.webp",
     gsm: "300 GSM Virgin Brown Kraft",
     barrier: "Oil & Condiment Barrier",
     pack: "1,000 pcs / carton",
@@ -734,7 +734,7 @@ const PRODUCT_DIMENSIONS = {
   "paper-cone": {
     name: "Paper Fry Scoop Cone",
     cat: "Snack & Dip Cones",
-    img: "assets/images/product_paper_cone.jpg",
+    img: "assets/images/product_paper_cone.webp",
     gsm: "280 GSM Foodboard",
     barrier: "High Grease Absorption Prevention",
     pack: "1,000 pcs / carton",
@@ -745,7 +745,7 @@ const PRODUCT_DIMENSIONS = {
   "pie-box": {
     name: "Pie & Pizza Slice Wedge Box",
     cat: "Wedge Cartons",
-    img: "assets/images/product_pie_box.jpg",
+    img: "assets/images/product_pie_box.webp",
     gsm: "300 GSM Bleached Foodboard",
     barrier: "Grease Resistant Interior",
     pack: "500 pcs / carton",
@@ -756,7 +756,7 @@ const PRODUCT_DIMENSIONS = {
   "pastry-tray": {
     name: "Individual Pastry Trays",
     cat: "Bakery Counter Serving",
-    img: "assets/images/product_pastry_tray.jpg",
+    img: "assets/images/product_pastry_tray.webp",
     gsm: "1.0 mm Rigid Laminated Board",
     barrier: "Greaseproof Gold/Black/White Lamination",
     pack: "1,000 pcs / carton",
@@ -779,7 +779,7 @@ function initDimensionsVisualizer() {
     const data = PRODUCT_DIMENSIONS[itemKey] || {
       name: productName,
       cat: "Certified Food Packaging",
-      img: card ? card.querySelector('.product-card-img')?.src : "assets/images/product_burger_box_custom.jpg",
+      img: card ? card.querySelector('.product-card-img')?.src : "assets/images/product_burger_box_custom.webp",
       gsm: "300–350 GSM Certified Foodboard",
       barrier: "Greaseproof Food-Grade Barrier",
       pack: "500 pcs / carton",
