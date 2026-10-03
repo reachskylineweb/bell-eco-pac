@@ -391,7 +391,7 @@
 
           <form id="contactQuoteForm" action="https://api.web3forms.com/submit" method="POST">
             <!-- Web3Forms Access Key for dm@bellmatch.com -->
-            <input type="hidden" name="access_key" class="web3forms-access-key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+            <input type="hidden" name="access_key" class="web3forms-access-key" value="77c3048c-b836-4d5f-9283-538f7718eb36">
             <input type="hidden" name="subject" value="New B2B Wholesale Quote Request - dm@bellmatch.com">
             <input type="hidden" name="from_name" value="Bell Eco Pac B2B Portal">
             <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
@@ -518,16 +518,13 @@
   <script>
     // =========================================================================
     // Web3Forms Configuration: Delivers inquiries directly to dm@bellmatch.com
-    // Replace 'YOUR_WEB3FORMS_ACCESS_KEY_HERE' with your Web3Forms access key token.
     // =========================================================================
-    const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY_HERE";
+    const WEB3FORMS_ACCESS_KEY = "77c3048c-b836-4d5f-9283-538f7718eb36";
 
     async function sendInquiryToWeb3Forms(formElement, customSubject) {
-      const token = (WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "YOUR_WEB3FORMS_ACCESS_KEY_HERE")
-        ? WEB3FORMS_ACCESS_KEY
-        : formElement.querySelector('[name="access_key"]')?.value;
+      const token = WEB3FORMS_ACCESS_KEY || formElement.querySelector('[name="access_key"]')?.value;
 
-      if (!token || token === "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
+      if (!token) {
         console.info("Web3Forms access key pending. Proceeding with WhatsApp dispatch.");
         return { success: false, reason: "key_pending" };
       }

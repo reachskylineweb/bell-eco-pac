@@ -420,8 +420,8 @@ function initModals() {
       const displayQty = customUnits ? `${qty} (Custom: ${customUnits})` : qty;
 
       // Web3Forms dispatch to dm@bellmatch.com
-      const token = window.WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY_HERE";
-      if (token && token !== "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
+      const token = window.WEB3FORMS_ACCESS_KEY || quoteForm.querySelector('[name="access_key"]')?.value || "77c3048c-b836-4d5f-9283-538f7718eb36";
+      if (token) {
         try {
           const formData = new FormData(quoteForm);
           formData.set('access_key', token);
