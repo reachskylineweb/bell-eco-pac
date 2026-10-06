@@ -67,10 +67,18 @@
   }
   </script>
   <style>
+    /* Premium Hero Section */
     .story-hero {
       background: var(--bg-surface);
       border-bottom: 1px solid var(--border-light);
       padding: 4.5rem 0 3.75rem;
+      position: relative;
+    }
+    .story-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
     }
     .story-hero-subtitle {
       font-size: 1.35rem;
@@ -82,15 +90,65 @@
     .story-hero-text {
       color: var(--text-secondary);
       font-size: 1.05rem;
-      max-width: 850px;
       line-height: 1.7;
-      margin-bottom: 2.25rem;
+      margin-bottom: 2rem;
     }
     .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       align-items: center;
+    }
+    .hero-photo-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-light);
+      background: #ffffff;
+    }
+    .hero-photo-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-floating-badge {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-md);
+    }
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .hero-stat-item strong {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: var(--primary);
+    }
+    .hero-stat-item span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
     }
     
     /* Pillar & Value Cards */
@@ -190,7 +248,7 @@
       margin-right: 0.35rem;
     }
 
-    /* Detailed Certificate Cards */
+    /* Detailed Certificate Cards with Thumbnails */
     .cert-spec-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -201,14 +259,57 @@
       background: #ffffff;
       border: 1px solid var(--border-light);
       border-radius: var(--radius-lg);
-      padding: 2rem;
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .cert-spec-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .cert-thumb-wrap {
+      width: 100%;
+      height: 220px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      border: 1px solid var(--border-light);
+      position: relative;
+      background: #fdfdfd;
+      cursor: pointer;
+    }
+    .cert-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform var(--transition);
+    }
+    .cert-thumb-wrap:hover .cert-thumb-img {
+      transform: scale(1.04);
+    }
+    .cert-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 56, 42, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .cert-thumb-wrap:hover .cert-thumb-overlay {
+      opacity: 1;
     }
     .cert-spec-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--primary);
       margin-bottom: 0.5rem;
       font-family: 'Outfit', sans-serif;
@@ -221,7 +322,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       background: var(--primary-soft);
       color: var(--primary);
       width: fit-content;
@@ -241,6 +342,12 @@
     }
     .cert-meta-list strong {
       color: var(--primary);
+    }
+    .cert-actions-cluster {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
     }
 
     /* Verify Certificate Callout */
@@ -263,6 +370,40 @@
       flex-direction: column;
       gap: 1.25rem;
       box-shadow: var(--shadow-sm);
+    }
+    .amfori-logo-container {
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+    .amfori-logo-img {
+      max-width: 320px;
+      height: auto;
+      display: block;
+    }
+
+    /* Certificate Lightbox Modal */
+    .cert-modal-dialog {
+      max-width: 750px;
+      width: 95%;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+    }
+    .cert-modal-view-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
     }
 
     /* FAQ Accordion */
@@ -333,6 +474,15 @@
       color: var(--primary);
     }
 
+    @media (max-width: 991px) {
+      .story-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .hero-photo-card img {
+        height: 300px;
+      }
+    }
     @media (max-width: 768px) {
       .story-hero {
         padding: 2.75rem 0;
@@ -342,6 +492,9 @@
       }
       .comparison-table {
         min-width: 580px;
+      }
+      .hero-stats-row {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -354,31 +507,74 @@
   <main id="main-content">
 
     <!-- ========================================== -->
-    <!-- 1. EDITORIAL HERO SECTION                  -->
+    <!-- 1. REDESIGNED EDITORIAL HERO SECTION       -->
     <!-- ========================================== -->
     <section class="story-hero">
       <div class="container">
-        <span class="section-overline">SIVAKASI &amp; VIRUDHUNAGAR HERITAGE</span>
-        <h1 style="color: var(--primary); font-size: 2.6rem; margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif;">
-          Food Packaging Manufacturer with a Certified Factory in Tamil Nadu
-        </h1>
-        <div class="story-hero-subtitle">
-          Sustainable paper food packaging, printed and made under one roof
+        
+        <div class="story-hero-grid">
+          
+          <!-- Left Text & Actions -->
+          <div>
+            <span class="section-overline">SIVAKASI &amp; VIRUDHUNAGAR HERITAGE</span>
+            <h1 style="color: var(--primary); font-size: clamp(2rem, 4vw, 2.75rem); margin-bottom: 0.75rem; font-family: 'Outfit', sans-serif; line-height: 1.2;">
+              Food Packaging Manufacturer with a Certified Factory in Tamil Nadu
+            </h1>
+            <div class="story-hero-subtitle">
+              Sustainable paper food packaging, printed and made under one roof
+            </div>
+            <p class="story-hero-text">
+              Bell EcoPacs, a division of The Bell Match Company, is a food packaging manufacturer in Virudhunagar district, Tamil Nadu. On our 5-acre site we print, die-cut, fold and glue paper food packaging, including takeaway containers, kraft food containers, fold boxes and paper straws. We supply restaurants, cafes, cloud kitchens, hotels and distributors across India. Our printing and converting site is BRCGS Grade A certified for direct food contact, our quality system has been ISO 9001 certified since 2009, and we hold FSC Chain of Custody certification. This page shows how we make eco-friendly packaging, and the documents that prove it.
+            </p>
+            <div class="hero-cta-row">
+              <button class="btn btn-lg btn-primary open-quote-modal" data-product="Factory Bulk Supply">
+                Request Wholesale Quote
+              </button>
+              <a href="#certificates" class="btn btn-lg btn-outline">
+                View Certificates &darr;
+              </a>
+              <a href="tel:+917845965010" class="btn btn-lg btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                Call Direct: +91 78459 65010
+              </a>
+            </div>
+
+            <!-- Fast Trust Metrics -->
+            <div class="hero-stats-row">
+              <div class="hero-stat-item">
+                <strong>5 Acres</strong>
+                <span>Plant Campus</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>BRCGS 'A'</strong>
+                <span>Food-Contact</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>ISO 9001</strong>
+                <span>Since 2009</span>
+              </div>
+              <div class="hero-stat-item">
+                <strong>FSC&reg;</strong>
+                <span>Virgin Fiber</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Studio Photography Card -->
+          <div class="hero-photo-card">
+            <img src="assets/images/factory_plant.webp" alt="Bell EcoPacs 5-Acre Manufacturing Campus in Tamil Nadu" loading="eager" width="600" height="380">
+            <div class="hero-floating-badge">
+              <div>
+                <span style="display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); font-weight: 700;">Live Production Campus</span>
+                <strong style="font-size: 0.95rem; color: var(--primary);">Virudhunagar &amp; Sivakasi Plant</strong>
+              </div>
+              <a href="#certificates" class="badge badge-eco" style="text-decoration: none; font-size: 0.75rem;">
+                BRCGS &amp; ISO Verified
+              </a>
+            </div>
+          </div>
+
         </div>
-        <p class="story-hero-text">
-          Bell EcoPacs, a division of The Bell Match Company, is a food packaging manufacturer in Virudhunagar district, Tamil Nadu. On our 5-acre site we print, die-cut, fold and glue paper food packaging, including takeaway containers, kraft food containers, fold boxes and paper straws. We supply restaurants, cafes, cloud kitchens, hotels and distributors across India. Our printing and converting site is BRCGS Grade A certified for direct food contact, our quality system has been ISO 9001 certified since 2009, and we hold FSC Chain of Custody certification. This page shows how we make eco-friendly packaging, and the documents that prove it.
-        </p>
-        <div class="hero-cta-row">
-          <button class="btn btn-lg btn-primary open-quote-modal" data-product="Factory Bulk Supply">
-            Request Wholesale Quote
-          </button>
-          <a href="#certificates" class="btn btn-lg btn-outline">
-            View Certificates &darr;
-          </a>
-          <a href="tel:+917845965010" class="btn btn-lg btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-            Call Direct: +91 78459 65010
-          </a>
-        </div>
+
       </div>
     </section>
 
@@ -629,64 +825,91 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 6. CERTIFIED QUALITY & VERIFICATION        -->
+    <!-- 6. CERTIFIED QUALITY & VERIFICATION (OFFICIAL UPLOADS) -->
     <!-- ========================================== -->
     <section class="section-padding-sm" id="certificates" style="background: var(--bg-surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
       <div class="container">
         
         <div class="section-header">
-          <span class="section-overline">Audited Standards</span>
+          <span class="section-overline">Audited Standards &amp; Verified Documents</span>
           <h2 class="section-title">Certified Quality You Can Verify</h2>
           <h3 style="font-size: 1.25rem; color: var(--secondary); margin-top: 0.5rem; font-family: 'Outfit', sans-serif;">
-            International Standards Maintained
+            International Standards Maintained &bull; Click to View Full Certificate
           </h3>
         </div>
 
         <div class="cert-spec-grid">
           
-          <!-- BRCGS -->
+          <!-- BRCGS Grade A Certificate Card -->
           <div class="cert-spec-card">
             <div>
+              <div class="cert-thumb-wrap" onclick="openCertModal('assets/certificates/brcgs_grade_a_certificate.jpeg', 'BRCGS Packaging Materials - Grade A Certificate')">
+                <img src="assets/certificates/brcgs_grade_a_thumb.webp" alt="BRCGS Packaging Materials Grade A Certificate SGS Scan" class="cert-thumb-img" loading="lazy">
+                <div class="cert-thumb-overlay">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                  <span>Click to Inspect Certificate</span>
+                </div>
+              </div>
               <span class="cert-badge">Direct Food Contact</span>
               <h3>BRCGS Packaging Materials, Grade A (Issue 7)</h3>
               <ul class="cert-meta-list">
-                <li><strong>Issued By:</strong> SGS</li>
+                <li><strong>Issued By:</strong> SGS United Kingdom Ltd</li>
                 <li><strong>Certificate No:</strong> IN26/00000313</li>
                 <li><strong>Site Code:</strong> 10022903</li>
-                <li><strong>Scope:</strong> Offset printing, die-cutting, folding and gluing of printed folded paper boxes for direct food contact, and flexo printing and formation of paper straws for direct food contact.</li>
-                <li><strong>Validity:</strong> Issued 17 April 2026, valid to 15 April 2027.</li>
+                <li><strong>Scope:</strong> Offset printing, die-cutting, folding &amp; gluing of printed folded paper boxes, and flexo printing &amp; formation of paper straws for direct food contact.</li>
+                <li><strong>Validity:</strong> 17 April 2026 to 15 April 2027</li>
               </ul>
             </div>
-            <div>
-              <a href="https://directory.brcgs.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="width: 100%; text-align: center;">
-                Verify on BRCGS Directory &rarr;
+            <div class="cert-actions-cluster">
+              <a href="https://directory.brcgs.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-align: center;">
+                Verify on BRCGS Directory (10022903) &rarr;
+              </a>
+              <a href="assets/certificates/brcgs_grade_a_certificate.jpeg" target="_blank" class="btn btn-sm btn-outline" style="text-align: center;">
+                Download / View High-Res Certificate
               </a>
             </div>
           </div>
 
-          <!-- ISO 9001:2015 -->
+          <!-- ISO 9001:2015 Certificate Card -->
           <div class="cert-spec-card">
             <div>
+              <div class="cert-thumb-wrap" onclick="openCertModal('assets/certificates/iso_9001_certificate.jpg', 'ISO 9001:2015 Management System Certificate (DNV)')">
+                <img src="assets/certificates/iso_9001_thumb.webp" alt="ISO 9001:2015 Management System Certificate DNV Scan" class="cert-thumb-img" loading="lazy">
+                <div class="cert-thumb-overlay">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                  <span>Click to Inspect Certificate</span>
+                </div>
+              </div>
               <span class="cert-badge">Quality Management</span>
               <h3>ISO 9001:2015 Quality Management</h3>
               <ul class="cert-meta-list">
-                <li><strong>Certified By:</strong> DNV</li>
+                <li><strong>Certified By:</strong> DNV Business Assurance</li>
                 <li><strong>Certificate No:</strong> 176509-2015-AQ-IND-RvA</li>
                 <li><strong>Scope:</strong> Manufacture of paper board products for food packaging, catering and serving supplies.</li>
                 <li><strong>Tenure:</strong> Certified since November 2009.</li>
                 <li><strong>Validity:</strong> Current certificate valid to 20 April 2027.</li>
               </ul>
             </div>
-            <div>
-              <a href="mailto:dm@bellmatch.com?subject=ISO%20Certificate%20Request" class="btn btn-sm btn-outline" style="width: 100%; text-align: center;">
-                Request Certificate Copy &rarr;
+            <div class="cert-actions-cluster">
+              <button class="btn btn-sm btn-primary open-quote-modal" data-product="ISO 9001 Certificate Copy">
+                Request Official DNV Copy &rarr;
+              </button>
+              <a href="assets/certificates/iso_9001_certificate.jpg" target="_blank" class="btn btn-sm btn-outline" style="text-align: center;">
+                Download / View High-Res Certificate
               </a>
             </div>
           </div>
 
-          <!-- FSC Chain of Custody -->
+          <!-- FSC Chain of Custody Certificate Card -->
           <div class="cert-spec-card">
             <div>
+              <div class="cert-thumb-wrap" onclick="openCertModal('assets/certificates/fsc_certificate.webp', 'FSC® Chain of Custody Certificate (Preferred by Nature)')">
+                <img src="assets/certificates/fsc_certificate_thumb.webp" alt="FSC Chain of Custody Certificate Scan" class="cert-thumb-img" loading="lazy">
+                <div class="cert-thumb-overlay">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+                  <span>Click to Inspect Certificate</span>
+                </div>
+              </div>
               <span class="cert-badge">Responsible Forestry</span>
               <h3>FSC&reg; Chain of Custody</h3>
               <ul class="cert-meta-list">
@@ -697,9 +920,12 @@
                 <li><strong>Validity:</strong> Valid 3 March 2025 to 2 March 2030.</li>
               </ul>
             </div>
-            <div>
-              <a href="https://info.fsc.org/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline" style="width: 100%; text-align: center;">
-                Verify at info.fsc.org &rarr;
+            <div class="cert-actions-cluster">
+              <a href="https://info.fsc.org/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary" style="text-align: center;">
+                Verify at info.fsc.org (FSC-C101804) &rarr;
+              </a>
+              <a href="assets/certificates/fsc_certificate.pdf" target="_blank" class="btn btn-sm btn-outline" style="text-align: center;">
+                Download Official Certificate (PDF)
               </a>
             </div>
           </div>
@@ -712,11 +938,11 @@
             Don't Take Our Word for It. Verify Our Certificates.
           </h3>
           <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.25rem;">
-            Every certificate we hold can be checked with the body that issued it. Search our site code <strong>10022903</strong> in the BRCGS Directory, look up <strong>FSC-C101804</strong> on info.fsc.org, or ask our team for official copies. Certificate copies are available on request: write to <a href="mailto:dm@bellmatch.com" style="color: var(--secondary); font-weight: 700; text-decoration: underline;">dm@bellmatch.com</a>.
+            Every certificate we hold can be checked directly with the body that issued it. Search our site code <strong>10022903</strong> in the BRCGS Directory, look up <strong>FSC-C101804</strong> on info.fsc.org, or ask our team for official copies. Certificate copies are available on request: write to <a href="mailto:dm@bellmatch.com" style="color: var(--secondary); font-weight: 700; text-decoration: underline;">dm@bellmatch.com</a>.
           </p>
           <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
             <a href="https://directory.brcgs.com/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
-              Verify BRCGS (Code: 10022903)
+              Verify BRCGS (Site Code: 10022903)
             </a>
             <a href="https://info.fsc.org/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
               Verify FSC (Licence: FSC-C101804)
@@ -756,23 +982,35 @@
             </div>
           </div>
 
-          <!-- Responsible Sourcing & amfori -->
+          <!-- Responsible Sourcing & Official amfori Membership -->
           <div class="amfori-box">
             <div>
               <span class="section-overline" style="color: var(--secondary);">Ethical Supply Chain</span>
               <h2 style="font-size: 1.6rem; color: var(--primary); margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif;">
                 Responsible Sourcing and Ethical Trade
               </h2>
-              <h3 style="font-size: 1.15rem; color: var(--secondary); margin-bottom: 1rem; font-family: 'Outfit', sans-serif;">
+              <h3 style="font-size: 1.15rem; color: var(--secondary); margin-bottom: 1.25rem; font-family: 'Outfit', sans-serif;">
                 Our amfori Membership
               </h3>
-              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem;">
+
+              <!-- Official amfori Member Boilerplate Logo & Link -->
+              <a href="https://www.amfori.org" target="_blank" rel="noopener noreferrer" class="amfori-logo-container" aria-label="Visit Official amfori Website">
+                <img src="assets/images/amfori_member_boilerplate.webp" alt="amfori Member - Trade with purpose. We act for a more sustainable supply chain." class="amfori-logo-img">
+              </a>
+
+              <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
                 amfori is a global business association driving sustainable trade and supporting our ESG due diligence efforts to improve the Environmental, Social, and Governance performance of our supply chain. Being a member of amfori shows that we act for a more sustainable supply chain.
               </p>
+              <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; margin: 0; background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid #0055a4;">
+                <strong>amfori BSCI Implementation:</strong> We make use of amfori BSCI (Business Social Compliance Initiative), a comprehensive programme designed to identify, assess, and mitigate social risks and enhance labour standard transparency within international supply chains.
+              </p>
             </div>
-            <div>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem;">
               <a href="https://www.amfori.org" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 0.5rem;">
-                Learn More at amfori.org &rarr;
+                Visit Official amfori.org &rarr;
+              </a>
+              <a href="assets/certificates/amfori_member_toolkit_guidelines.pdf" target="_blank" class="btn btn-sm btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                Member Toolkit Guidelines (PDF)
               </a>
             </div>
           </div>
@@ -993,6 +1231,28 @@
 
   </main>
 
+  <!-- ========================================== -->
+  <!-- CERTIFICATE LIGHTBOX MODAL                 -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="certLightboxModal" role="dialog" aria-modal="true" style="z-index: 10000;">
+    <div class="modal-dialog cert-modal-dialog">
+      <button class="modal-close-btn" id="closeCertModal" aria-label="Close certificate preview">&times;</button>
+      <div style="margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; padding-right: 2.5rem;">
+        <div>
+          <span class="badge badge-eco" style="font-size: 0.75rem;">Verified Certificate Document</span>
+          <h3 id="certModalTitle" style="color: var(--primary); font-size: 1.25rem; margin-top: 0.35rem; margin-bottom: 0; font-family: 'Outfit', sans-serif;">Official Certificate Document</h3>
+        </div>
+      </div>
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <img src="" alt="Official Certificate Document Scan" id="certModalImg" class="cert-modal-view-img">
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+        <span style="font-size: 0.85rem; color: var(--text-muted);">SGS / DNV / Preferred by Nature Verified Copy</span>
+        <a href="" id="certDownloadLink" target="_blank" class="btn btn-sm btn-primary">Open High-Resolution File &rarr;</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer Placeholder (loaded from layout/footer.html) -->
   <div id="footer-placeholder"></div>
 
@@ -1064,5 +1324,35 @@
   </div>
 
   <script src="js/main.js"></script>
+  <script>
+    function openCertModal(src, title) {
+      const modal = document.getElementById('certLightboxModal');
+      const img = document.getElementById('certModalImg');
+      const titleEl = document.getElementById('certModalTitle');
+      const dlLink = document.getElementById('certDownloadLink');
+      if (modal && img) {
+        img.src = src;
+        if (titleEl) titleEl.innerText = title;
+        if (dlLink) dlLink.href = src;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    const closeBtn = document.getElementById('closeCertModal');
+    const certModal = document.getElementById('certLightboxModal');
+    if (closeBtn && certModal) {
+      closeBtn.addEventListener('click', () => {
+        certModal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      certModal.addEventListener('click', (e) => {
+        if (e.target === certModal) {
+          certModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
