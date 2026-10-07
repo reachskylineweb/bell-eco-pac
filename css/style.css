@@ -1250,6 +1250,19 @@ button, input, select, textarea {
   gap: 1.5rem;
 }
 
+.cert-grid-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .cert-grid-three {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
 .cert-editorial-box {
   padding: 1.75rem 1.25rem;
   border: 1px solid var(--border-light);
